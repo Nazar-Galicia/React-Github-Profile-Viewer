@@ -1,8 +1,10 @@
+import "./Viewer.css"
+
 const Viewer = () => {
     return (
-        <div>
-            <h1>GitHub Users</h1>
-            <p>Explore and search for github users</p>
+        <div className="viewer">
+            <h1 className="viewer__heading">GitHub Users</h1>
+            <p className="viewer__subtitle">Explore and search for github users</p>
         </div>
     )
 }
