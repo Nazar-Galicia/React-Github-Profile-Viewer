@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 16px;
+    font-weight: 400;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+
+button, input, textarea {
+    border: none;
+    background-color: transparent;
+}
+button:focus, input:focus, textarea:focus {
+    outline: none;
+}
+ul, ol, menu {
+    list-style: none;
+}
