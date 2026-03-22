@@ -1,3 +1,5 @@
+import "./UserCard.css"
+
 const UserCard = () => {
     return (
         <figure className="user-card">
