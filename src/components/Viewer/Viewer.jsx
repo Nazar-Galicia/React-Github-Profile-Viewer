@@ -2,6 +2,7 @@ import UsersList from "@/components/UsersList/UsersList.jsx";
 import {useEffect, useRef, useState} from "react";
 import githubAPI from "@/api/githubAPI";
 import "./Viewer.css"
+import SearchUser from "@/components/SearchUser/SearchUser.jsx";
 
 const Viewer = () => {
     const observerRef = useRef(null);
@@ -52,6 +53,7 @@ const Viewer = () => {
                     <h1 className="viewer__heading">GitHub Users</h1>
                     <p className="viewer__subtitle">Explore and search for github users</p>
                 </div>
+                <SearchUser />
                 <UsersList users={users} />
             </div>
             <div ref={observerRef}></div>
