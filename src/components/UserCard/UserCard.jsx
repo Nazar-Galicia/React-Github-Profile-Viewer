@@ -1,3 +1,4 @@
+import {memo} from "react";
 import "./UserCard.css"
 
 const UserCard = (props) => {
@@ -23,4 +24,4 @@ const UserCard = (props) => {
     )
 }
 
-export default UserCard;
+export default memo(UserCard);
