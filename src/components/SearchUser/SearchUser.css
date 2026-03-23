@@ -1,0 +1,65 @@
+.viewer__search-user-input {
+    position: relative;
+    max-width: 100%;
+    margin: 20px 0;
+}
+.viewer__search-user-form {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    padding: 10px 0;
+}
+.viewer__search-user-input-field {
+    width: 100%;
+    padding: 14px 16px 14px 44px;
+
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(8px);
+
+    color: #e5e7eb;
+    font-size: 15px;
+
+    outline: none;
+    transition: all 0.25s ease;
+}
+.viewer__search-user-input-field::placeholder {
+    color: #6b7280;
+}
+
+.viewer__search-user-input-field:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.viewer__search-user-input-field:focus {
+    border-color: #3b82f6;
+
+    box-shadow:
+            0 0 0 2px rgba(59, 130, 246, 0.2),
+            0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+.viewer__search-user-input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 18px;
+    height: 18px;
+
+    stroke: #6b7280;
+    stroke-width: 2;
+    fill: none;
+
+    pointer-events: none;
+    transition: 0.2s;
+}
+
+.viewer__search-user-input-field:focus + .viewer__search-user-input-icon,
+.viewer__search-user-input:hover .viewer__search-user-input-icon {
+    stroke: #3b82f6;
+}
