@@ -31,10 +31,11 @@ const Viewer = () => {
     }, []);
 
     const [users, setUsers] = useState([]);
+    const perPage = 40;
 
     useEffect(() => {
         console.log(page)
-        githubAPI.getUsers(page).then((users) => {
+        githubAPI.getUsers(page, perPage).then((users) => {
             setUsers(prev => {
                 const merged = [...prev, ...users];
 
