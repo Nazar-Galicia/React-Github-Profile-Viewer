@@ -1,22 +1,30 @@
 import "./UserCard.css"
 
-const UserCard = () => {
+const UserCard = (props) => {
+    const {
+        username,
+        avatar,
+        bio,
+        tech,
+        repos
+    } = props
+
     return (
         <figure className="user-card">
             <img
                 className="user-avatar"
-                src="https://avatars.githubusercontent.com/u/583231?v=4"
+                src={avatar}
                 alt="avatar"
             />
 
             <figcaption className="user-info">
-                <h3 className="user-name">octocat</h3>
-                <p className="user-bio">The Octocat</p>
+                <h3 className="user-name">{username}</h3>
+                <p className="user-bio">{bio}</p>
 
                 <div className="user-meta">
-                    <span>GitHub</span>
+                    <span>{tech}</span>
                     <span>•</span>
-                    <span>8 repos</span>
+                    <span>{repos} repos</span>
                 </div>
             </figcaption>
 
