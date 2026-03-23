@@ -1,8 +1,21 @@
 import './SearchUser.css'
+import githubAPI from "@/api/githubAPI.js";
+import {useEffect, useRef, useState} from "react";
 
 const SearchUser = () => {
+    const [query, setQuery] = useState("");
+    const formRef = useRef(null);
+
+    useEffect(() => {
+        if (query.trim()) {
+            githubAPI.searchUsers(query).then((users) => {
+                console.log(users)
+            })
+        }
+    }, [query])
+
     return (
-        <form className="viewer__search-user-form">
+        <form ref={formRef} className="viewer__search-user-form">
             <div className="viewer__search-user-input">
                 <svg className="viewer__search-user-input-icon" viewBox="0 0 24 24">
                     <path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z"/>
@@ -12,6 +25,10 @@ const SearchUser = () => {
                     type="text"
                     placeholder="Search GitHub users..."
                     className="viewer__search-user-input-field"
+                    value={query}
+                    onInput={(event) => {
+                        setQuery(event.target.value)
+                    }}
                 />
             </div>
         </form>
