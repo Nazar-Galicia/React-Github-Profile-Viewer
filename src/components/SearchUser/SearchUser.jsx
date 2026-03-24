@@ -2,7 +2,11 @@ import './SearchUser.css'
 import githubAPI from "@/api/githubAPI.js";
 import {useEffect, useRef, useState} from "react";
 
-const SearchUser = () => {
+const SearchUser = (props) => {
+    const {
+        setUsers
+    } = props;
+
     const [query, setQuery] = useState("");
     const formRef = useRef(null);
 
@@ -10,6 +14,7 @@ const SearchUser = () => {
         if (query.trim()) {
             githubAPI.searchUsers(query).then((users) => {
                 console.log(users)
+                setUsers(users.items);
             })
         }
     }, [query])

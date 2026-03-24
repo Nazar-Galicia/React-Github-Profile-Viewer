@@ -53,7 +53,7 @@ const Viewer = () => {
                     <h1 className="viewer__heading">GitHub Users</h1>
                     <p className="viewer__subtitle">Explore and search for github users</p>
                 </div>
-                <SearchUser />
+                <SearchUser setUsers={setUsers}/>
                 <UsersList users={users} />
             </div>
             <div ref={observerRef}></div>
