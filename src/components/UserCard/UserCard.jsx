@@ -14,7 +14,7 @@ const UserCard = (props) => {
     return (
         <figure
             className="user-card"
-            onClick={() => navigate(`/user/${id}`)}
+            onClick={() => navigate(`/users/${username}`)}
         >
             <img
                 className="user-avatar"

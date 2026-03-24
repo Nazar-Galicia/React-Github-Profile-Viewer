@@ -7,7 +7,7 @@ function App() {
   return (
       <Routes>
         <Route path='/' element={<Viewer />} />
-        <Route path='/user/:id' element={<User />} />
+        <Route path='/users/:id' element={<User />} />
       </Routes>
   )
 }
