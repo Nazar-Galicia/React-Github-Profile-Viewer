@@ -5,10 +5,9 @@ import User from "@/pages/User/User.jsx";
 function App() {
 
   return (
-    // <Viewer />
       <Routes>
         <Route path='/' element={<Viewer />} />
-        <Route path='/user' element={<User />} />
+        <Route path='/user/:id' element={<User />} />
       </Routes>
   )
 }

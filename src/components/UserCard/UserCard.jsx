@@ -1,14 +1,21 @@
 import {memo} from "react";
+import {useNavigate} from "react-router-dom";
 import "./UserCard.css"
 
 const UserCard = (props) => {
     const {
+        id,
         username,
         avatar,
     } = props
 
+    const navigate = useNavigate();
+
     return (
-        <figure className="user-card">
+        <figure
+            className="user-card"
+            onClick={() => navigate(`/user/${id}`)}
+        >
             <img
                 className="user-avatar"
                 src={avatar}

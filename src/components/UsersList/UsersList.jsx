@@ -18,6 +18,7 @@ const UsersList = (props) => {
                 }) => (
                     <UserCard
                         key={id}
+                        id={id}
                         username={login}
                         avatar={avatar_url}
                     />
