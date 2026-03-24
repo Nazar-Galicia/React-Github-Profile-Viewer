@@ -1,0 +1,15 @@
+.user__repos {
+    margin-top: clamp(20px, 4vw, 30px);
+}
+
+.user__repos-title {
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: #e5e7eb;
+    margin-bottom: clamp(12px, 2vw, 16px);
+}
+
+.user__repos-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(12px, 2vw, 16px);
+}

@@ -1,4 +1,5 @@
 import UserReposCard from "@/components/UserReposCard/UserReposCard.jsx";
+import './UserReposList.css'
 
 const UserReposList = (props) => {
     const {

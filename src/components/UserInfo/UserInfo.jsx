@@ -1,4 +1,5 @@
 import UserReposList from "@/components/UserReposList/UserReposList.jsx";
+import './UserInfo.css'
 
 const UserInfo = (props) => {
     const {

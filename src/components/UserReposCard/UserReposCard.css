@@ -1,0 +1,38 @@
+.repo-card {
+    flex: 1 1 clamp(260px, 30%, 340px);
+    padding: clamp(12px, 2vw, 16px);
+
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+    transition: 0.25s;
+}
+
+.repo-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+}
+
+.repo-card__name {
+    font-size: clamp(14px, 1.8vw, 16px);
+    color: #60a5fa;
+    word-break: break-word;
+}
+
+.repo-card__desc {
+    margin-top: 8px;
+    font-size: clamp(12px, 1.5vw, 13px);
+    color: #9ca3af;
+}
+
+.repo-card__meta {
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+
+    font-size: clamp(11px, 1.4vw, 12px);
+    color: #6b7280;
+}

@@ -1,3 +1,5 @@
+import './UserReposCard.css'
+
 const UserReposCard = (props) => {
     const {
         name,
