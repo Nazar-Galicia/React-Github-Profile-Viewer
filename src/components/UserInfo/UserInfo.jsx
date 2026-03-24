@@ -1,3 +1,5 @@
+import UserReposList from "@/components/UserReposList/UserReposList.jsx";
+
 const UserInfo = (props) => {
     const {
         user,
@@ -38,32 +40,7 @@ const UserInfo = (props) => {
                 </a>
             </div>
 
-            <div className="user__repos">
-
-                <h2 className="user__repos-title">Repositories</h2>
-
-                <div className="user__repos-list">
-                    {repos?.map(repo => (
-                        <div key={repo.id} className="repo-card">
-
-                            <div className="repo-card__header">
-                                <h3 className="repo-card__name">{repo.name}</h3>
-                            </div>
-
-                            <p className="repo-card__desc">
-                                {repo.description || "No description"}
-                            </p>
-
-                            <div className="repo-card__meta">
-                                <span>{repo.language || "Unknown"}</span>
-                                <span>★ {repo.stargazers_count}</span>
-                            </div>
-
-                        </div>
-                    ))}
-                </div>
-
-            </div>
+            <UserReposList repos={repos}/>
 
         </div>
     )
