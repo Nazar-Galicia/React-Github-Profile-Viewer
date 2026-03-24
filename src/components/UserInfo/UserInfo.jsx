@@ -1,13 +1,15 @@
 import UserReposList from "@/components/UserReposList/UserReposList.jsx";
 import './UserInfo.css'
+import UserFollowersList from "@/components/UserFollowersList/UserFollowersList.jsx";
 
 const UserInfo = (props) => {
     const {
         user,
         repos,
+        followers,
     } = props
 
-    console.log(user, repos)
+    console.log(user, repos, followers)
 
     return (
         <div className="user">
@@ -42,6 +44,7 @@ const UserInfo = (props) => {
             </div>
 
             <UserReposList repos={repos}/>
+            <UserFollowersList followers={followers} />
 
         </div>
     )

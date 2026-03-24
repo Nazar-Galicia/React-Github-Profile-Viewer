@@ -10,6 +10,7 @@ const User = () => {
 
     const [user, setUser] = useState(null);
     const [repos, setRepos] = useState(null);
+    const [followers, setFollowers] = useState(null);
 
     useEffect(() => {
         if (!id) return;
@@ -18,11 +19,12 @@ const User = () => {
 
         githubApi.getUser(id).then(setUser);
         githubApi.getRepos(id).then(setRepos);
+        githubApi.getFollowers(id).then(setFollowers);
     }, [id]);
 
     if (!user) return <div>Loading...</div>;
 
-    return <UserInfo user={user} repos={repos}/>;
+    return <UserInfo user={user} repos={repos} followers={followers} />;
 }
 
 export default User
