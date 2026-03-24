@@ -80,3 +80,46 @@
 .user__btn:hover {
     background: #2563eb;
 }
+.user-tabs {
+    margin-top: clamp(20px, 4vw, 30px);
+}
+
+.user-tabs__controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    margin-bottom: 16px;
+}
+
+.user-tabs__btn {
+    padding: 8px 14px;
+
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+
+    background: rgba(255,255,255,0.04);
+    color: #9ca3af;
+
+    font-size: 14px;
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.user-tabs__btn:hover {
+    border-color: rgba(255,255,255,0.2);
+    color: #e5e7eb;
+}
+
+.user-tabs__btn.active {
+    background: #3b82f6;
+    color: #fff;
+    border-color: transparent;
+
+    box-shadow: 0 0 12px rgba(59,130,246,0.4);
+}
+
+.user-tabs__content {
+    width: 100%;
+}

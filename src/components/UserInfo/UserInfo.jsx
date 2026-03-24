@@ -1,4 +1,5 @@
 import UserReposList from "@/components/UserReposList/UserReposList.jsx";
+import {useState} from "react";
 import './UserInfo.css'
 import UserFollowersList from "@/components/UserFollowersList/UserFollowersList.jsx";
 
@@ -10,6 +11,8 @@ const UserInfo = (props) => {
     } = props
 
     console.log(user, repos, followers)
+
+    const [tab, setTab] = useState("repos");
 
     return (
         <div className="user">
@@ -43,9 +46,34 @@ const UserInfo = (props) => {
                 </a>
             </div>
 
-            <UserReposList repos={repos}/>
-            <UserFollowersList followers={followers} />
+            <div className="user-tabs">
 
+                <div className="user-tabs__controls">
+                    <button
+                        className={`user-tabs__btn ${tab === "repos" ? "active" : ""}`}
+                        onClick={() => setTab("repos")}
+                    >
+                        Repositories
+                    </button>
+
+                    <button
+                        className={`user-tabs__btn ${tab === "followers" ? "active" : ""}`}
+                        onClick={() => setTab("followers")}
+                    >
+                        Followers
+                    </button>
+                </div>
+
+            </div>
+
+            <div className="user-tabs__content">
+                {tab === "repos" && (
+                    <UserReposList repos={repos}/>
+                )}
+                {tab === "followers" && (
+                    <UserFollowersList followers={followers} />
+                )}
+            </div>
         </div>
     )
 }
