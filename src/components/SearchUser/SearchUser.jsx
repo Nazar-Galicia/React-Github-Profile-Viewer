@@ -1,23 +1,43 @@
 import './SearchUser.css'
 import githubAPI from "@/api/githubAPI.js";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useRef} from "react";
 
 const SearchUser = (props) => {
     const {
-        setUsers
+        setUsers,
+        setPage,
+        isSearching,
+        query,
+        setQuery,
     } = props;
 
-    const [query, setQuery] = useState("");
     const formRef = useRef(null);
 
+    let timeout = useRef(null);
+
     useEffect(() => {
-        if (query.trim()) {
-            githubAPI.searchUsers(query).then((users) => {
-                console.log(users)
-                setUsers(users.items);
-            })
-        }
-    }, [query])
+        clearTimeout(timeout.current);
+
+        timeout.current = setTimeout(() => {
+            const q = query.trim();
+
+            if (q.length >= 2) {
+                githubAPI.searchUsers(q).then((users) => {
+                    isSearching.current = true;
+                    setUsers(users?.items || []);
+                    setPage(0);
+                });
+            } else {
+                githubAPI.getUsers(0, 40).then((users) => {
+                    isSearching.current = false;
+                    setUsers(users || []);
+                    setPage(0);
+                });
+            }
+        }, 500);
+
+        return () => clearTimeout(timeout.current);
+    }, [query]);
 
     return (
         <form ref={formRef} className="viewer__search-user-form">

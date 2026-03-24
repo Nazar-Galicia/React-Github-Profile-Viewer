@@ -7,6 +7,8 @@ import SearchUser from "@/components/SearchUser/SearchUser.jsx";
 const Viewer = () => {
     const observerRef = useRef(null);
     const [page, setPage] = useState(0);
+    const isSearching = useRef(false);
+    const [query, setQuery] = useState("");
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -36,14 +38,24 @@ const Viewer = () => {
 
     useEffect(() => {
         console.log(page)
-        githubAPI.getUsers(page, perPage).then((users) => {
-            setUsers(prev => {
-                const merged = [...prev, ...users];
 
-                return [...new Map(merged.map(u => [u.id, u])).values()];
-            });
-            console.log(users)
-        })
+        if (!isSearching.current) {
+            githubAPI.getUsers(page, perPage).then((users) => {
+                setUsers(prev => {
+                    const merged = [...prev, ...users];
+
+                    return [...new Map(merged.map(u => [u.id, u])).values()];
+                });
+            })
+        } else {
+            githubAPI.searchUsers(query, page, 40).then((users) => {
+                setUsers(prev => {
+                    const merged = [...prev, ...users.items];
+
+                    return [...new Map(merged.map(u => [u.id, u])).values()];
+                })
+            })
+        }
     }, [page])
 
     return (
@@ -53,7 +65,13 @@ const Viewer = () => {
                     <h1 className="viewer__heading">GitHub Users</h1>
                     <p className="viewer__subtitle">Explore and search for github users</p>
                 </div>
-                <SearchUser setUsers={setUsers}/>
+                <SearchUser
+                    setUsers={setUsers}
+                    setPage={setPage}
+                    isSearching={isSearching}
+                    query={query}
+                    setQuery={setQuery}
+                />
                 <UsersList users={users} />
             </div>
             <div ref={observerRef}></div>
