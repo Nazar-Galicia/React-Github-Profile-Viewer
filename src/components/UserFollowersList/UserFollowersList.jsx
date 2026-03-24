@@ -1,4 +1,5 @@
 import UserFollowerCard from "@/components/UserFollowerCard/UserFollowerCard.jsx";
+import './UserFollowerList.css'
 
 const UserFollowersList = (props) => {
     const {

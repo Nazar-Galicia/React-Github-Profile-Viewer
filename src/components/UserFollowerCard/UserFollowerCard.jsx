@@ -1,3 +1,5 @@
+import './UserFollowerCard.css'
+
 const UserFollowerCard = (props) => {
     const {
         avatar,
