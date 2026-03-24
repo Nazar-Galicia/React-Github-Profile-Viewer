@@ -48,7 +48,7 @@ const Viewer = () => {
                 });
             })
         } else {
-            githubAPI.searchUsers(query, page, 40).then((users) => {
+            githubAPI.searchUsers(query, page, perPage).then((users) => {
                 setUsers(prev => {
                     const merged = [...prev, ...users.items];
 
