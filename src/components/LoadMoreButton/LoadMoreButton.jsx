@@ -1,6 +1,8 @@
+import './LoadMoreButton.css'
+
 const LoadMoreButton = () => {
     return (
-        <button>Load More</button>
+        <button className="load-more">Load More</button>
     )
 }
 
