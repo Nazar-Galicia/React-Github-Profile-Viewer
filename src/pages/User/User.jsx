@@ -24,7 +24,13 @@ const User = () => {
 
     if (!user) return <div>Loading...</div>;
 
-    return <UserInfo user={user} repos={repos} followers={followers} />;
+    return <UserInfo
+        user={user}
+        repos={repos}
+        followers={followers}
+        setRepos={setRepos}
+        setFollowers={setFollowers}
+    />;
 }
 
 export default User

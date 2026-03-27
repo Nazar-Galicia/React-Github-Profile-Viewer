@@ -1,19 +1,49 @@
 import UserReposList from "@/components/UserReposList/UserReposList.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import './UserInfo.css'
 import UserFollowersList from "@/components/UserFollowersList/UserFollowersList.jsx";
 import LoadMoreButton from "@/components/LoadMoreButton/LoadMoreButton.jsx";
+import githubApi from "@/api/githubAPI.js";
 
 const UserInfo = (props) => {
     const {
         user,
         repos,
         followers,
+        setRepos,
+        setFollowers,
     } = props
 
     console.log(user, repos, followers)
 
     const [tab, setTab] = useState("repos");
+    const [page, setPage] = useState(1);
+
+    useEffect(() => {
+        if (tab === "repos") {
+            githubApi.getRepos(user.login, page, 40)
+                .then(repos => {
+                    setRepos(prev => {
+                        const merged = [...prev, ...repos];
+
+                        return [...new Map(merged.map(u => [u.id, u])).values()];
+                    })
+                })
+        } else if (tab === "followers") {
+            githubApi.getFollowers(user.login, page, 40)
+                .then(followers => {
+                    setFollowers(prev => {
+                        const merged = [...prev, ...followers];
+
+                        return [...new Map(merged.map(u => [u.id, u])).values()];
+                    })
+                })
+        }
+    }, [page])
+
+    useEffect(() => {
+        setPage(1);
+    }, [tab])
 
     return (
         <div className="user">
@@ -72,7 +102,7 @@ const UserInfo = (props) => {
                  tab === "followers" ? <UserFollowersList followers={followers} /> : null}
             </div>
 
-            <LoadMoreButton />
+            <LoadMoreButton setPage={setPage}/>
         </div>
     )
 }

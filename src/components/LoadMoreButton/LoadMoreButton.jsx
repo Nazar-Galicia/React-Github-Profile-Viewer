@@ -1,8 +1,16 @@
 import './LoadMoreButton.css'
 
-const LoadMoreButton = () => {
+const LoadMoreButton = (props) => {
+    const {
+        setPage,
+    } = props
+
+    function changePage() {
+        setPage(prev => prev + 1)
+    }
+
     return (
-        <button className="load-more">Load More</button>
+        <button onClick={changePage} className="load-more">Load More</button>
     )
 }
 
