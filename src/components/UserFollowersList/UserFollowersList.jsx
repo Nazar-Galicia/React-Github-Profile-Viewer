@@ -1,5 +1,5 @@
-import UserFollowerCard from "@/components/UserFollowerCard/UserFollowerCard.jsx";
 import './UserFollowerList.css'
+import UserCard from "@/components/UserCard/UserCard.jsx";
 
 const UserFollowersList = (props) => {
     const {
@@ -9,10 +9,10 @@ const UserFollowersList = (props) => {
     return (
         <div className="followers-list">
             {followers?.map(f => (
-                <UserFollowerCard
+                <UserCard
                     key={f.id}
                     avatar={f.avatar_url}
-                    login={f.login}
+                    username={f.login}
                 />
             ))}
         </div>

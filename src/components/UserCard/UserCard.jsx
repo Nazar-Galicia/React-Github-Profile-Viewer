@@ -4,7 +4,6 @@ import "./UserCard.css"
 
 const UserCard = (props) => {
     const {
-        id,
         username,
         avatar,
     } = props
