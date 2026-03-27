@@ -2,6 +2,7 @@ import UserReposList from "@/components/UserReposList/UserReposList.jsx";
 import {useState} from "react";
 import './UserInfo.css'
 import UserFollowersList from "@/components/UserFollowersList/UserFollowersList.jsx";
+import LoadMoreButton from "@/components/LoadMoreButton/LoadMoreButton.jsx";
 
 const UserInfo = (props) => {
     const {
@@ -67,13 +68,11 @@ const UserInfo = (props) => {
             </div>
 
             <div className="user-tabs__content">
-                {tab === "repos" && (
-                    <UserReposList repos={repos}/>
-                )}
-                {tab === "followers" && (
-                    <UserFollowersList followers={followers} />
-                )}
+                {tab === "repos" ? <UserReposList repos={repos} /> :
+                 tab === "followers" ? <UserFollowersList followers={followers} /> : null}
             </div>
+
+            <LoadMoreButton />
         </div>
     )
 }
