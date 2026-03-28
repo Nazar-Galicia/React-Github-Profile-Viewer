@@ -85,7 +85,7 @@ const UserReposCard = (props) => {
                     {language || "Unknown"}
                 </div>
 
-                <span>★ {stargazersCount}</span>
+                <span className="repo-stars">★ {stargazersCount}</span>
             </div>
 
         </figure>
