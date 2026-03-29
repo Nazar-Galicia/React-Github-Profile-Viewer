@@ -7,6 +7,8 @@ import githubAPI from "@/api/githubAPI.js";
 import {mergeArrays} from "@/utils/mergeArrays.js";
 import UserTopReposList from "@/components/UserTopReposList/UserTopReposList.jsx";
 import UserPinnedReposList from "@/components/UserPinnedReposList/UserPinnedReposList.jsx";
+import FollowersIcon from '../../../public/icons/followers.png'
+import ReposIcon from '../../../public/icons/repository.png'
 
 const UserInfo = (props) => {
     const {
@@ -100,7 +102,7 @@ const UserInfo = (props) => {
                         onClick={() => setTab("repos")}
                     >
                         Repositories
-                        <img className="user-tabs__icon" src="../../../public/icons/repository.png" alt="repo icon"/>
+                        <img className="user-tabs__icon" src={ReposIcon} alt="repo icon"/>
                     </button>
 
                     <button
@@ -108,7 +110,7 @@ const UserInfo = (props) => {
                         onClick={() => setTab("followers")}
                     >
                         Followers
-                        <img className="user-tabs__icon" src="../../../public/icons/followers.png" alt="follower icon"/>
+                        <img className="user-tabs__icon" src={FollowersIcon} alt="follower icon"/>
                     </button>
                 </div>
 
