@@ -1,6 +1,6 @@
 import UsersList from "@/components/UsersList/UsersList.jsx";
 import {useEffect, useRef, useState} from "react";
-import githubAPI from "@/api/githubAPI";
+import githubAPI from "@/api/githubAPI.js";
 import "./Viewer.css"
 import SearchUser from "@/components/SearchUser/SearchUser.jsx";
 import {mergeArrays} from "@/utils/mergeArrays.js";

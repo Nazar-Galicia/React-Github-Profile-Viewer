@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import UserInfo from "@/components/UserInfo/UserInfo.jsx";
 import {useEffect, useState} from "react";
-import githubApi from "@/api/githubAPI.js";
+import githubAPI from "@/api/githubAPI.js";
 
 const User = () => {
     const {
@@ -17,9 +17,9 @@ const User = () => {
 
         setUser(null);
 
-        githubApi.getUser(id).then(setUser);
-        githubApi.getRepos(id).then(setRepos);
-        githubApi.getFollowers(id, 1, 40).then(setFollowers);
+        githubAPI.getUser(id).then(setUser);
+        githubAPI.getRepos(id).then(setRepos);
+        githubAPI.getFollowers(id, 1, 40).then(setFollowers);
     }, [id]);
 
     if (!user) return <div>Loading...</div>;

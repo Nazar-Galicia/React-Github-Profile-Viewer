@@ -1,0 +1,38 @@
+const token = import.meta.env.VITE_GH_TOKEN
+
+const headers = {
+    "Authorization": `Bearer ${token}`,
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+    "User-Agent": "github-profile-viewer"
+}
+const URL = 'https://api.github.com'
+
+const githubApi = {
+    getUsers: (page=1, perPage=10) => {
+        return fetch(`${URL}/users?since=${page * perPage + 1}&per_page=${perPage}`, {
+            method: 'GET',
+            headers,
+        }).then(res => res.json())
+    },
+    getUser: (id) => {
+        return fetch(`${URL}/users/${id}`, {
+            method: 'GET',
+            headers,
+        }).then(res => res.json())
+    },
+    getRepos: (id, page=1, perPage=10) => {
+        return fetch(`${URL}/users/${id}/repos?page=${page}&per_page=${perPage}`, {
+            method: 'GET',
+            headers,
+        }).then(res => res.json())
+    },
+    getFollowers: (id, page=1, perPage=10) => {
+        return fetch(`${URL}/users/${id}/followers?page=${page}&per_page=${perPage}`, {
+            method: 'GET',
+            headers,
+        }).then(res => res.json())
+    }
+}
+
+export default githubApi

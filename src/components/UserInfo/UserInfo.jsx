@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import './UserInfo.css'
 import UserFollowersList from "@/components/UserFollowersList/UserFollowersList.jsx";
 import LoadMoreButton from "@/components/LoadMoreButton/LoadMoreButton.jsx";
-import githubApi from "@/api/githubAPI.js";
+import githubAPI from "@/api/githubAPI.js";
 import {mergeArrays} from "@/utils/mergeArrays.js";
 import UserTopReposList from "@/components/UserTopReposList/UserTopReposList.jsx";
 import UserPinnedReposList from "@/components/UserPinnedReposList/UserPinnedReposList.jsx";
@@ -24,12 +24,12 @@ const UserInfo = (props) => {
 
     useEffect(() => {
         if (tab === "repos") {
-            githubApi.getRepos(user.login, page, 40)
+            githubAPI.getRepos(user.login, page, 40)
                 .then(repos => {
                     setRepos(prev => mergeArrays(prev, repos))
                 })
         } else if (tab === "followers") {
-            githubApi.getFollowers(user.login, page, 40)
+            githubAPI.getFollowers(user.login, page, 40)
                 .then(followers => {
                     setFollowers(prev => mergeArrays(prev, followers))
                 })
@@ -43,7 +43,7 @@ const UserInfo = (props) => {
     const [manyRepos, setManyRepos] = useState([]);
 
     useEffect(() => {
-        githubApi.getRepos(user.login, 1, 120).then(repos => {
+        githubAPI.getRepos(user.login, 1, 120).then(repos => {
             setManyRepos(repos);
         })
     }, [])
