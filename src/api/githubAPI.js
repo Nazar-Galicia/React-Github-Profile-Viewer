@@ -32,6 +32,12 @@ const githubApi = {
             method: 'GET',
             headers,
         }).then(res => res.json())
+    },
+    searchUsers: (query, page=1, perPage=10) => {
+        return fetch(`${URL}/search/users?q=${query}&page=${page}&per_page=${perPage}`, {
+            method: 'GET',
+            headers,
+        }).then(res => res.json())
     }
 }
 
