@@ -4,6 +4,9 @@ import './UserInfo.css'
 import UserFollowersList from "@/components/UserFollowersList/UserFollowersList.jsx";
 import LoadMoreButton from "@/components/LoadMoreButton/LoadMoreButton.jsx";
 import githubApi from "@/api/githubAPI.js";
+import {mergeArrays} from "@/utils/mergeArrays.js";
+import UserTopReposList from "@/components/UserTopReposList/UserTopReposList.jsx";
+import UserPinnedReposList from "@/components/UserPinnedReposList/UserPinnedReposList.jsx";
 
 const UserInfo = (props) => {
     const {
@@ -23,20 +26,12 @@ const UserInfo = (props) => {
         if (tab === "repos") {
             githubApi.getRepos(user.login, page, 40)
                 .then(repos => {
-                    setRepos(prev => {
-                        const merged = [...prev, ...repos];
-
-                        return [...new Map(merged.map(u => [u.id, u])).values()];
-                    })
+                    setRepos(prev => mergeArrays(prev, repos))
                 })
         } else if (tab === "followers") {
             githubApi.getFollowers(user.login, page, 40)
                 .then(followers => {
-                    setFollowers(prev => {
-                        const merged = [...prev, ...followers];
-
-                        return [...new Map(merged.map(u => [u.id, u])).values()];
-                    })
+                    setFollowers(prev => mergeArrays(prev, followers))
                 })
         }
     }, [page])
@@ -44,6 +39,21 @@ const UserInfo = (props) => {
     useEffect(() => {
         setPage(1);
     }, [tab])
+
+    const [manyRepos, setManyRepos] = useState([]);
+
+    useEffect(() => {
+        githubApi.getRepos(user.login, 1, 120).then(repos => {
+            setManyRepos(repos);
+        })
+    }, [])
+
+    const sortedRepos = [...manyRepos].sort(
+        (a, b) => b.stargazers_count - a.stargazers_count
+    );
+
+    const topRepos = sortedRepos.slice(0, 5);
+    const pinnedRepos = sortedRepos.slice(5, 13);
 
     return (
         <div className="user">
@@ -77,6 +87,11 @@ const UserInfo = (props) => {
                 </a>
             </div>
 
+            <div className="user-main-repositories">
+                <UserPinnedReposList pinnedRepos={pinnedRepos} />
+                <UserTopReposList topRepos={topRepos} />
+            </div>
+
             <div className="user-tabs">
 
                 <div className="user-tabs__controls">
@@ -85,6 +100,7 @@ const UserInfo = (props) => {
                         onClick={() => setTab("repos")}
                     >
                         Repositories
+                        <img className="user-tabs__icon" src="../../../public/icons/repository.png" alt="repo icon"/>
                     </button>
 
                     <button
@@ -92,6 +108,7 @@ const UserInfo = (props) => {
                         onClick={() => setTab("followers")}
                     >
                         Followers
+                        <img className="user-tabs__icon" src="../../../public/icons/followers.png" alt="follower icon"/>
                     </button>
                 </div>
 

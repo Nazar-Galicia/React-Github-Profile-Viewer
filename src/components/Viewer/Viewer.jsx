@@ -3,6 +3,7 @@ import {useEffect, useRef, useState} from "react";
 import githubAPI from "@/api/githubAPI";
 import "./Viewer.css"
 import SearchUser from "@/components/SearchUser/SearchUser.jsx";
+import {mergeArrays} from "@/utils/mergeArrays.js";
 
 const Viewer = () => {
     const observerRef = useRef(null);
@@ -41,19 +42,11 @@ const Viewer = () => {
 
         if (!isSearching.current) {
             githubAPI.getUsers(page, perPage).then((users) => {
-                setUsers(prev => {
-                    const merged = [...prev, ...users];
-
-                    return [...new Map(merged.map(u => [u.id, u])).values()];
-                });
+                setUsers(prev => mergeArrays(prev, users));
             })
         } else {
             githubAPI.searchUsers(query, page, perPage).then((users) => {
-                setUsers(prev => {
-                    const merged = [...prev, ...users.items];
-
-                    return [...new Map(merged.map(u => [u.id, u])).values()];
-                })
+                setUsers(prev => mergeArrays(prev, users.items));
             })
         }
     }, [page])

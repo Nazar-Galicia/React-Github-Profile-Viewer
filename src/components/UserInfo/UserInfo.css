@@ -86,17 +86,19 @@
 
 .user-tabs__controls {
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
 
     margin-bottom: 16px;
 }
 
 .user-tabs__btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
     padding: 8px 14px;
 
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 3px solid rgba(255,255,255,0.08);
 
     background: rgba(255,255,255,0.04);
     color: #9ca3af;
@@ -105,6 +107,10 @@
     cursor: pointer;
 
     transition: 0.2s;
+}
+.user-tabs__icon {
+    width: 1em;
+    height: auto;
 }
 
 .user-tabs__btn:hover {
@@ -115,11 +121,50 @@
 .user-tabs__btn.active {
     background: #3b82f6;
     color: #fff;
-    border-color: transparent;
+    border-color: #2b5ab1;
 
     box-shadow: 0 0 12px rgba(59,130,246,0.4);
 }
 
 .user-tabs__content {
     width: 100%;
+}
+.user-main-repositories {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+.user-main-repositories > *:first-child {
+    flex: 2;
+    min-width: 0;
+}
+
+.user-main-repositories > *:last-child {
+    flex: 1;
+    min-width: 0;
+}
+.user-main-repositories > * {
+    width: 100%;
+}
+@media (max-width: 1024px) {
+    .user-main-repositories {
+        gap: 16px;
+    }
+
+    .user-main-repositories > *:first-child {
+        flex: 1.5;
+    }
+
+    .user-main-repositories > *:last-child {
+        flex: 1;
+    }
+}
+@media (max-width: 768px) {
+    .user-main-repositories {
+        flex-direction: column;
+    }
+
+    .user-main-repositories > * {
+        flex: unset;
+    }
 }

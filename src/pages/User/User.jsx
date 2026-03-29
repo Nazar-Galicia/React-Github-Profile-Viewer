@@ -19,7 +19,7 @@ const User = () => {
 
         githubApi.getUser(id).then(setUser);
         githubApi.getRepos(id).then(setRepos);
-        githubApi.getFollowers(id).then(setFollowers);
+        githubApi.getFollowers(id, 1, 40).then(setFollowers);
     }, [id]);
 
     if (!user) return <div>Loading...</div>;

@@ -1,5 +1,6 @@
 import {memo} from "react";
 import './UserReposCard.css'
+import UserRepoMeta from "@/components/UserRepoMeta/UserRepoMeta.jsx";
 
 const UserReposCard = (props) => {
     const {
@@ -73,20 +74,11 @@ const UserReposCard = (props) => {
                 {description || "No description"}
             </p>
 
-            <div className="repo-card__meta">
-                <div
-                    className="repo-lang"
-                    style={{
-                        backgroundColor: meta.color + "20",
-                        color: meta.color
-                    }}
-                >
-                    {meta.icon && <i className={`${meta.icon} repo-lang__icon`} />}
-                    {language || "Unknown"}
-                </div>
-
-                <span className="repo-stars">★ {stargazersCount}</span>
-            </div>
+            <UserRepoMeta
+                meta={meta}
+                language={language}
+                stargazersCount={stargazersCount}
+            />
 
         </figure>
     )

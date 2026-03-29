@@ -1,0 +1,56 @@
+.top-repos {
+    padding: 16px;
+    border-radius: 16px;
+    margin-top: 16px;
+
+    background: rgba(255,255,255,0.02);
+
+    backdrop-filter: blur(6px);
+
+    border: 1px solid rgba(59,130,246,0.2);
+    box-shadow: 0 0 20px rgba(59,130,246,0.08);
+}
+.top-repos__title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 16px;
+    font-weight: 600;
+    color: #e5e7eb;
+
+    margin-bottom: 12px;
+}
+.top-repos__list {
+    display: flex;
+    flex-direction: column;
+}
+
+.top-repos__list > *:not(:last-child) {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.top-repos__list:hover {
+    border-color: rgba(59,130,246,0.3);
+}
+.top-repos {
+    position: relative;
+}
+
+.top-repos::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    bottom: 12px;
+
+    width: 3px;
+    border-radius: 10px;
+
+    background: linear-gradient(
+            to bottom,
+            #3b82f6,
+            transparent
+    );
+
+    opacity: 0.7;
+}

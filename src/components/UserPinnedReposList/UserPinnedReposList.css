@@ -1,0 +1,33 @@
+.pinned-list {
+    margin-top: 24px;
+    padding: 16px;
+
+    border-radius: 16px;
+
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+
+    backdrop-filter: blur(6px);
+}
+.pinned-list__header {
+    margin-bottom: 14px;
+}
+
+.pinned-list__title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 16px;
+    font-weight: 600;
+    color: #e5e7eb;
+}
+
+.pinned-list__icon {
+    font-size: 14px;
+}
+.pinned-list__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+}

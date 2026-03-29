@@ -1,0 +1,26 @@
+.repo-card__meta {
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+
+    font-size: clamp(11px, 1.4vw, 12px);
+    color: #6b7280;
+}
+.repo-lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 4px 10px;
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.repo-lang__icon {
+    font-size: 16px;
+}
+.repo-stars {
+    color: #ffc400;
+}
