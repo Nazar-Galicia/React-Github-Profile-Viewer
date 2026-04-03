@@ -4,6 +4,7 @@ import githubAPI from "@/api/githubAPI.js";
 import "./Viewer.css"
 import SearchUser from "@/components/SearchUser/SearchUser.jsx";
 import {mergeArrays} from "@/utils/mergeArrays.js";
+import useObserver from "@/hooks/useObserver.js";
 
 const Viewer = () => {
     const observerRef = useRef(null);
@@ -11,28 +12,7 @@ const Viewer = () => {
     const isSearching = useRef(false);
     const [query, setQuery] = useState("");
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setPage((prevState) => prevState + 1);
-                    }
-                });
-            },
-            {
-                threshold: 0.1,
-            }
-        );
-
-        if (observerRef.current) {
-            observer.observe(observerRef.current);
-        }
-
-        return () => {
-            if (observerRef.current) observer.unobserve(observerRef.current);
-        };
-    }, []);
+    useObserver(setPage, observerRef);
 
     const [users, setUsers] = useState([]);
     const perPage = 40;
