@@ -3,7 +3,6 @@ import "./Viewer.css"
 import SearchUser from "@/components/SearchUser/SearchUser.jsx";
 import {useViewer} from "@/hooks/useViewer.js";
 
-
 const Viewer = () => {
 
     const {
