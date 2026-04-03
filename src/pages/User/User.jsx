@@ -8,9 +8,10 @@ const User = () => {
         id,
     } = useParams();
 
-    const [user, setUser] = useState(null);
-    const [repos, setRepos] = useState(null);
-    const [followers, setFollowers] = useState(null);
+    const [user, setUser] = useState([]);
+    const [repos, setRepos] = useState([]);
+    const [followers, setFollowers] = useState([]);
+    const [manyRepos, setManyRepos] = useState([]);
 
     useEffect(() => {
         if (!id) return;
@@ -20,7 +21,8 @@ const User = () => {
         githubAPI.getUser(id).then(setUser);
         githubAPI.getRepos(id).then(setRepos);
         githubAPI.getFollowers(id, 1, 40).then(setFollowers);
-    }, [id]);
+        githubAPI.getRepos(id, 1, 120).then(setManyRepos);
+    }, []);
 
     if (!user) return <div>Loading...</div>;
 
@@ -30,7 +32,8 @@ const User = () => {
         followers={followers}
         setRepos={setRepos}
         setFollowers={setFollowers}
-    />;
+        manyRepos={manyRepos}
+    />
 }
 
 export default User

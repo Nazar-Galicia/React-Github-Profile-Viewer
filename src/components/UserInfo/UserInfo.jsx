@@ -17,6 +17,7 @@ const UserInfo = (props) => {
         followers,
         setRepos,
         setFollowers,
+        manyRepos,
     } = props
 
     console.log(user, repos, followers)
@@ -41,14 +42,6 @@ const UserInfo = (props) => {
     useEffect(() => {
         setPage(1);
     }, [tab])
-
-    const [manyRepos, setManyRepos] = useState([]);
-
-    useEffect(() => {
-        githubAPI.getRepos(user.login, 1, 120).then(repos => {
-            setManyRepos(repos);
-        })
-    }, [])
 
     const sortedRepos = [...manyRepos].sort(
         (a, b) => b.stargazers_count - a.stargazers_count
