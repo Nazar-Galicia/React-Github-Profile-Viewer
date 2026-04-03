@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 
-function useObserver(setPage, observerRef) {
+export function useObserver(setPage, observerRef) {
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -24,5 +24,3 @@ function useObserver(setPage, observerRef) {
         };
     }, []);
 }
-
-export default useObserver;
