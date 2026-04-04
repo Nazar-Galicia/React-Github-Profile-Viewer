@@ -1,6 +1,5 @@
 import './SearchUser.css'
-import githubAPI from "@/api/githubAPI.js";
-import {useEffect, useRef} from "react";
+import {useSearchUser} from "@/hooks/useSearchUser.js";
 
 const SearchUser = (props) => {
     const {
@@ -11,33 +10,14 @@ const SearchUser = (props) => {
         setQuery,
     } = props;
 
-    const formRef = useRef(null);
-
-    let timeout = useRef(null);
-
-    useEffect(() => {
-        clearTimeout(timeout.current);
-
-        timeout.current = setTimeout(() => {
-            const q = query.trim();
-
-            if (q.length >= 2) {
-                githubAPI.searchUsers(q).then((users) => {
-                    isSearching.current = true;
-                    setUsers(users?.items || []);
-                    setPage(0);
-                });
-            } else {
-                githubAPI.getUsers(0, 40).then((users) => {
-                    isSearching.current = false;
-                    setUsers(users || []);
-                    setPage(0);
-                });
-            }
-        }, 500);
-
-        return () => clearTimeout(timeout.current);
-    }, [query]);
+    const {
+        formRef,
+    } = useSearchUser(
+        setUsers,
+        setPage,
+        isSearching,
+        query,
+    );
 
     return (
         <form ref={formRef} className="viewer__search-user-form">
