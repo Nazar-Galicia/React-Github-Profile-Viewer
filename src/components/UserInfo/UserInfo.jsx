@@ -1,14 +1,12 @@
 import UserReposList from "@/components/UserReposList/UserReposList.jsx";
-import {useEffect, useState} from "react";
 import './UserInfo.css'
 import UserFollowersList from "@/components/UserFollowersList/UserFollowersList.jsx";
 import LoadMoreButton from "@/components/LoadMoreButton/LoadMoreButton.jsx";
-import githubAPI from "@/api/githubAPI.js";
-import {mergeArrays} from "@/utils/mergeArrays.js";
 import UserTopReposList from "@/components/UserTopReposList/UserTopReposList.jsx";
 import UserPinnedReposList from "@/components/UserPinnedReposList/UserPinnedReposList.jsx";
 import FollowersIcon from '../../../public/icons/followers.png'
 import ReposIcon from '../../../public/icons/repository.png'
+import {useUserInfo} from "@/hooks/useUserInfo.js";
 
 const UserInfo = (props) => {
     const {
@@ -22,33 +20,13 @@ const UserInfo = (props) => {
 
     console.log(user, repos, followers)
 
-    const [tab, setTab] = useState("repos");
-    const [page, setPage] = useState(1);
-
-    useEffect(() => {
-        if (tab === "repos") {
-            githubAPI.getRepos(user.login, page, 40)
-                .then(repos => {
-                    setRepos(prev => mergeArrays(prev, repos))
-                })
-        } else if (tab === "followers") {
-            githubAPI.getFollowers(user.login, page, 40)
-                .then(followers => {
-                    setFollowers(prev => mergeArrays(prev, followers))
-                })
-        }
-    }, [page])
-
-    useEffect(() => {
-        setPage(1);
-    }, [tab])
-
-    const sortedRepos = [...manyRepos].sort(
-        (a, b) => b.stargazers_count - a.stargazers_count
-    );
-
-    const topRepos = sortedRepos.slice(0, 5);
-    const pinnedRepos = sortedRepos.slice(5, 13);
+    const {
+        setTab,
+        tab,
+        setPage,
+        pinnedRepos,
+        topRepos,
+    } = useUserInfo(setRepos, setFollowers, user, manyRepos);
 
     return (
         <div className="user">
