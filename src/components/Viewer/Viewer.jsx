@@ -18,7 +18,6 @@ const Viewer = () => {
 
     return (
         <div className="viewer">
-            <Loader />
             <div className="container">
                 <div className="viewer__text-wrapper">
                     <h1 className="viewer__heading">GitHub Users</h1>

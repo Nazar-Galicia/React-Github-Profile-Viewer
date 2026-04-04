@@ -17,6 +17,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-family: "Inter", sans-serif;
+    position: relative;
+    top: 50%;
 
     gap: 14px;
     padding: 40px 0;

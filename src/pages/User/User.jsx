@@ -1,6 +1,7 @@
 import {useParams} from "react-router-dom";
 import UserInfo from "@/components/UserInfo/UserInfo.jsx";
 import {useGetUserData} from "@/hooks/useGetUserData.js";
+import Loader from "@/components/Loader/Loader.jsx";
 
 const User = () => {
     const {
@@ -16,7 +17,7 @@ const User = () => {
         manyRepos,
     } = useGetUserData(id)
 
-    if (!user) return <div>Loading...</div>;
+    if (!user) return <Loader>Loading GitHub data...</Loader>;
 
     return <UserInfo
         user={user}
