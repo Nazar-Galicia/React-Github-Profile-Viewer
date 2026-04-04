@@ -2,6 +2,7 @@ import UsersList from "@/components/UsersList/UsersList.jsx";
 import "./Viewer.css"
 import SearchUser from "@/components/SearchUser/SearchUser.jsx";
 import {useViewer} from "@/hooks/useViewer.js";
+import Loader from "@/components/Loader/Loader.jsx";
 
 const Viewer = () => {
 
@@ -17,6 +18,7 @@ const Viewer = () => {
 
     return (
         <div className="viewer">
+            <Loader />
             <div className="container">
                 <div className="viewer__text-wrapper">
                     <h1 className="viewer__heading">GitHub Users</h1>
