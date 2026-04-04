@@ -7,6 +7,7 @@ import UserPinnedReposList from "@/components/UserPinnedReposList/UserPinnedRepo
 import FollowersIcon from '../../../public/icons/followers.png'
 import ReposIcon from '../../../public/icons/repository.png'
 import {useUserInfo} from "@/hooks/useUserInfo.js";
+import Loader from "@/components/Loader/Loader.jsx";
 
 const UserInfo = (props) => {
     const {
@@ -61,7 +62,8 @@ const UserInfo = (props) => {
             </div>
 
             <div className="user-main-repositories">
-                <UserPinnedReposList pinnedRepos={pinnedRepos} />
+                {/*<UserPinnedReposList pinnedRepos={pinnedRepos} />*/}
+                {pinnedRepos ? <UserPinnedReposList pinnedRepos={pinnedRepos} /> : <Loader />}
                 <UserTopReposList topRepos={topRepos} />
             </div>
 
