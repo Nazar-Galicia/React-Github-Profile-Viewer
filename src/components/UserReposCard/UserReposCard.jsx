@@ -71,7 +71,7 @@ const UserReposCard = (props) => {
     const navigate = useNavigate();
 
     return (
-        <figure className="repo-card" onClick={() => navigate(`/repos/${userId}/${repoId}`)}>
+        <figure className="repo-card" onClick={() => navigate(`/repos/${userId}/${name}`)}>
 
             <div className="repo-card__header">
                 <figcaption className="repo-card__name">{name}</figcaption>

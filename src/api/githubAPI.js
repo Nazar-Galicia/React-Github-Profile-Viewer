@@ -35,6 +35,12 @@ const githubApi = {
             method: 'GET',
             headers,
         }).then(res => res.json())
+    },
+    getRepository: (userId, repoId) => {
+        return fetch(`${URL}/repos/${userId}/${repoId}`, {
+            method: 'GET',
+            headers,
+        }).then(res => res.json())
     }
 }
 

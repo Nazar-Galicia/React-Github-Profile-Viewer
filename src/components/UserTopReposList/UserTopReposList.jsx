@@ -20,7 +20,6 @@ const UserTopReposList = (props) => {
                     <UserReposCard
                         key={repo.id}
                         name={repo.name}
-                        repoId={repo.id}
                         userId={userId}
                         description={repo.description}
                         language={repo.language}
