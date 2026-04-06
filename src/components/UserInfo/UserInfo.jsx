@@ -63,8 +63,8 @@ const UserInfo = (props) => {
 
             <div className="user-main-repositories">
                 {/*<UserPinnedReposList pinnedRepos={pinnedRepos} />*/}
-                {pinnedRepos ? <UserPinnedReposList pinnedRepos={pinnedRepos} /> : <Loader />}
-                <UserTopReposList topRepos={topRepos} />
+                {pinnedRepos ? <UserPinnedReposList pinnedRepos={pinnedRepos} userId={user.login} /> : <Loader />}
+                <UserTopReposList userId={user.login} topRepos={topRepos} />
             </div>
 
             <div className="user-tabs">
@@ -90,7 +90,7 @@ const UserInfo = (props) => {
             </div>
 
             <div className="user-tabs__content">
-                {tab === "repos" ? <UserReposList repos={repos} /> :
+                {tab === "repos" ? <UserReposList userId={user.login} repos={repos} /> :
                  tab === "followers" ? <UserFollowersList followers={followers} /> : null}
             </div>
 

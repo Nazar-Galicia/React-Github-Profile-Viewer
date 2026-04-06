@@ -5,6 +5,7 @@ import UserReposCard from "@/components/UserReposCard/UserReposCard.jsx";
 const UserTopReposList = (props) => {
     const {
         topRepos,
+        userId,
     } = props
 
     return (
@@ -19,6 +20,8 @@ const UserTopReposList = (props) => {
                     <UserReposCard
                         key={repo.id}
                         name={repo.name}
+                        repoId={repo.id}
+                        userId={userId}
                         description={repo.description}
                         language={repo.language}
                         stargazersCount={repo.stargazers_count}

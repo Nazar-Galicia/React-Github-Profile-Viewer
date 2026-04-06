@@ -2,6 +2,7 @@ import {memo} from "react";
 import './UserReposCard.css'
 import UserRepoMeta from "@/components/UserRepoMeta/UserRepoMeta.jsx";
 import pin from '../../../public/icons/pin.png'
+import {useNavigate} from "react-router-dom";
 
 const UserReposCard = (props) => {
     const {
@@ -10,6 +11,8 @@ const UserReposCard = (props) => {
         language,
         stargazersCount,
         pinned=false,
+        userId,
+        repoId,
     } = props
 
     const languageMeta = [
@@ -65,8 +68,10 @@ const UserReposCard = (props) => {
 
     const meta = getLangMeta(language);
 
+    const navigate = useNavigate();
+
     return (
-        <figure className="repo-card">
+        <figure className="repo-card" onClick={() => navigate(`/repos/${userId}/${repoId}`)}>
 
             <div className="repo-card__header">
                 <figcaption className="repo-card__name">{name}</figcaption>

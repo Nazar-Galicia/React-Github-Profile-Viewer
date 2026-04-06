@@ -3,7 +3,8 @@ import './UserReposList.css'
 
 const UserReposList = (props) => {
     const {
-        repos
+        repos,
+        userId,
     } = props;
 
     return (
@@ -16,6 +17,8 @@ const UserReposList = (props) => {
                     <UserReposCard
                         key={repo.id}
                         name={repo.name}
+                        repoId={repo.id}
+                        userId={userId}
                         description={repo.description}
                         language={repo.language}
                         stargazersCount={repo.stargazers_count}
