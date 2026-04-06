@@ -1,4 +1,5 @@
 import {useParams} from "react-router-dom";
+import {useState} from "react";
 import UserInfo from "@/components/UserInfo/UserInfo.jsx";
 import {useGetUserData} from "@/hooks/useGetUserData.js";
 import Loader from "@/components/Loader/Loader.jsx";

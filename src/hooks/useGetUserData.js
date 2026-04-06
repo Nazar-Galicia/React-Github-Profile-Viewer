@@ -16,7 +16,7 @@ export function useGetUserData(id) {
         githubAPI.getRepos(id).then(setRepos);
         githubAPI.getFollowers(id, 1, 40).then(setFollowers);
         githubAPI.getRepos(id, 1, 120).then(setManyRepos);
-    }, []);
+    }, [id]);
 
     return {
         user,
