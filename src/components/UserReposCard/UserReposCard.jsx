@@ -1,6 +1,7 @@
 import {memo} from "react";
 import './UserReposCard.css'
 import UserRepoMeta from "@/components/UserRepoMeta/UserRepoMeta.jsx";
+import pin from '../../../public/icons/pin.png'
 
 const UserReposCard = (props) => {
     const {
@@ -8,6 +9,7 @@ const UserReposCard = (props) => {
         description,
         language,
         stargazersCount,
+        pinned=false,
     } = props
 
     const languageMeta = [
@@ -68,6 +70,7 @@ const UserReposCard = (props) => {
 
             <div className="repo-card__header">
                 <figcaption className="repo-card__name">{name}</figcaption>
+                {pinned ? <img className="repo-card__pin" src={pin} alt="pin"/> : null}
             </div>
 
             <p className="repo-card__desc">

@@ -27,3 +27,12 @@
     font-size: clamp(12px, 1.5vw, 13px);
     color: #9ca3af;
 }
+.repo-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.repo-card__pin {
+    width: 14px;
+    height: auto;
+}

@@ -24,6 +24,7 @@ const UserPinnedReposList = (props) => {
                             description={repo.description}
                             language={repo.language}
                             stargazersCount={repo.stargazers_count}
+                            pinned={true}
                         />
                     ))
                 }
