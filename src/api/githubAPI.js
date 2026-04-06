@@ -1,7 +1,8 @@
-const token = import.meta.env.VITE_GH_TOKEN;
+import {auth} from "@/api/api-auth.js";
+const authorization = auth || ''
 
 const headers = {
-    "Authorization": `Bearer ${token}`,
+    authorization,
     "Accept": "application/vnd.github+json",
     "X-GitHub-Api-Version": "2022-11-28",
     "User-Agent": "github-profile-viewer",
