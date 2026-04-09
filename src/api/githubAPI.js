@@ -1,4 +1,6 @@
-const headers = {
+import {authHeaders} from "@/api/api-auth.js";
+
+const headers = authHeaders || {
     "Accept": "application/vnd.github+json",
     "X-GitHub-Api-Version": "2022-11-28",
     "User-Agent": "github-profile-viewer",
