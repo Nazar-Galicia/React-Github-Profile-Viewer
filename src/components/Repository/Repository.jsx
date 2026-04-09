@@ -1,7 +1,7 @@
 import './Repository.css'
 import RepositoryCommitsList from "@/components/RepositoryCommitsList/RepositoryCommitsList.jsx";
 import {useCommits} from "@/hooks/useCommits.js";
-
+import {useState} from "react";
 
 const Repository = (props) => {
     const {
@@ -15,6 +15,8 @@ const Repository = (props) => {
     const {
         repoObserverRef,
     } = useCommits(repo, setCommits)
+
+    const [activeTab, setActiveTab] = useState(0)
 
     return (
         <div className="repo-details">
@@ -98,6 +100,34 @@ const Repository = (props) => {
                         </div>
 
                     </aside>
+
+                </div>
+
+                <div className="repo-tabs">
+
+                    <button
+                        className={`repo-tabs__tab ${activeTab === "commits" ? "is-active" : ""}`}
+                        onClick={() => setActiveTab("commits")}
+                    >
+                        <span className="repo-tabs__icon">📝</span>
+                        Commits
+                    </button>
+
+                    <button
+                        className={`repo-tabs__tab ${activeTab === "branches" ? "is-active" : ""}`}
+                        onClick={() => setActiveTab("branches")}
+                    >
+                        <span className="repo-tabs__icon">🌿</span>
+                        Branches
+                    </button>
+
+                    <button
+                        className={`repo-tabs__tab ${activeTab === "deployments" ? "is-active" : ""}`}
+                        onClick={() => setActiveTab("deployments")}
+                    >
+                        <span className="repo-tabs__icon">🚀</span>
+                        Deployments
+                    </button>
 
                 </div>
 
