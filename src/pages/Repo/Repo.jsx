@@ -15,7 +15,7 @@ const Repo = () => {
 
     useEffect(() => {
         githubApi.getRepository(userId, repoId).then(setRepo);
-        githubApi.getRepositoryCommits(userId, repoId).then(setCommits);
+        githubApi.getRepositoryCommits(userId, repoId, 1, 40).then(setCommits);
     }, [repoId, userId]);
 
     console.log(commits);
@@ -23,7 +23,7 @@ const Repo = () => {
     if (!repo || !repo.owner) return <Loader>Loading GitHub data...</Loader>;
 
     return (
-        <Repository repo={repo} commits={commits} />
+        <Repository repo={repo} commits={commits} setCommits={setCommits} />
     )
 }
 

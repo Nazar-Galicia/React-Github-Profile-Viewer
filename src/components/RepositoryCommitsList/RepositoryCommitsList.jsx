@@ -1,4 +1,5 @@
 import CommitCard from "@/components/CommitCard/CommitCard.jsx";
+import {memo} from "react";
 import './RepositoryCommitList.css'
 
 const RepositoryCommitsList = (props) => {
@@ -33,4 +34,4 @@ const RepositoryCommitsList = (props) => {
     )
 }
 
-export default RepositoryCommitsList;
+export default memo(RepositoryCommitsList);
