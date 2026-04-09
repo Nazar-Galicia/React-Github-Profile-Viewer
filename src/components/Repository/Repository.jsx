@@ -1,105 +1,103 @@
 import './Repository.css'
+import RepositoryCommitsList from "@/components/RepositoryCommitsList/RepositoryCommitsList.jsx";
 
 const Repository = (props) => {
     const {
         repo,
+        commits,
     } = props
+
+    console.log(repo)
 
     return (
         <div className="repo-details">
+
             <div className="repo-details__container">
 
                 <div className="repo-details__header">
-                    <div className="repo-details__title-block">
+
+                    <div className="repo-details__title-row">
                         <h1 className="repo-details__title">{repo.name}</h1>
+
                         <span className="repo-details__visibility">
-          {repo.private ? "Private" : "Public"}
-        </span>
+                          {repo.private ? "Private" : "Public"}
+                        </span>
                     </div>
 
                     <p className="repo-details__description">
-                        {repo.description || "No description provided"}
+                        {repo.description || "No description"}
                     </p>
 
-                    <a
-                        href={repo.html_url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="repo-details__link"
-                    >
-                        View on GitHub
-                    </a>
+                    <div className="repo-details__actions">
+                        <a
+                            href={repo.html_url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="repo-details__btn"
+                        >
+                            Open on GitHub
+                        </a>
+                    </div>
+
                 </div>
 
-                <div className="repo-details__stats">
-                    <div className="repo-details__stat">
-                        <span className="repo-details__stat-icon">⭐</span>
-                        <span className="repo-details__stat-value">{repo.stargazers_count}</span>
-                    </div>
+                <div className="repo-details__layout">
 
-                    <div className="repo-details__stat">
-                        <span className="repo-details__stat-icon">🍴</span>
-                        <span className="repo-details__stat-value">{repo.forks_count}</span>
-                    </div>
+                    <div className="repo-details__main">
 
-                    <div className="repo-details__stat">
-                        <span className="repo-details__stat-icon">👁</span>
-                        <span className="repo-details__stat-value">{repo.watchers_count}</span>
-                    </div>
-
-                    <div className="repo-details__stat">
-                        <span className="repo-details__stat-icon">🐛</span>
-                        <span className="repo-details__stat-value">{repo.open_issues_count}</span>
-                    </div>
-                </div>
-
-                <div className="repo-details__grid">
-
-                    <div className="repo-details__card">
-                        <h3 className="repo-details__card-title">General</h3>
-                        <ul className="repo-details__list">
-                            <li className="repo-details__list-item">
-                                Language: {repo.language || "—"}
-                            </li>
-                            <li className="repo-details__list-item">
-                                Default branch: {repo.default_branch}
-                            </li>
-                            <li className="repo-details__list-item">
-                                Size: {repo.size} KB
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div className="repo-details__card">
-                        <h3 className="repo-details__card-title">Dates</h3>
-                        <ul className="repo-details__list">
-                            <li className="repo-details__list-item">
-                                Created: {new Date(repo.created_at).toLocaleDateString()}
-                            </li>
-                            <li className="repo-details__list-item">
-                                Updated: {new Date(repo.updated_at).toLocaleDateString()}
-                            </li>
-                            <li className="repo-details__list-item">
-                                Pushed: {new Date(repo.pushed_at).toLocaleDateString()}
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div className="repo-details__card">
-                        <h3 className="repo-details__card-title">Owner</h3>
-                        <div className="repo-details__owner">
-                            <img
-                                className="repo-details__owner-avatar"
-                                src={repo.owner.avatar_url}
-                                alt={repo.owner.login}
-                            />
-                            <span className="repo-details__owner-name">
-                                {repo.owner.login}
-                            </span>
+                        <div className="repo-details__stats">
+                            <div>⭐ {repo.stargazers_count}</div>
+                            <div>🍴 {repo.forks_count}</div>
+                            <div>👁 {repo.watchers_count}</div>
+                            <div>🐛 {repo.open_issues_count}</div>
                         </div>
+
+                        <div className="repo-details__placeholder">
+                            Repository content / README
+                        </div>
+
                     </div>
+
+                    <aside className="repo-details__sidebar">
+
+                        <div className="repo-details__block">
+                            <span>Language</span>
+                            <strong>{repo.language || "—"}</strong>
+                        </div>
+
+                        <div className="repo-details__block">
+                            <span>Branch</span>
+                            <strong>{repo.default_branch}</strong>
+                        </div>
+
+                        <div className="repo-details__block">
+                            <span>Size</span>
+                            <strong>{repo.size} KB</strong>
+                        </div>
+
+                        <div className="repo-details__block">
+                            <span>Created</span>
+                            <strong>{new Date(repo.created_at).toLocaleDateString()}</strong>
+                        </div>
+
+                        <div className="repo-details__block">
+                            <span>Updated</span>
+                            <strong>{new Date(repo.updated_at).toLocaleDateString()}</strong>
+                        </div>
+
+                        <div className="repo-details__owner">
+                            <img src={repo.owner.avatar_url} />
+                            <span>{repo.owner.login}</span>
+                        </div>
+
+                    </aside>
+
                 </div>
+
             </div>
+
+            <RepositoryCommitsList commits={commits} />
+
         </div>
     )
 }
