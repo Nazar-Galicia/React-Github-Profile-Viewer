@@ -1,0 +1,53 @@
+.repo-commits {
+    margin-top: 32px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.repo-commits__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.repo-commits__title {
+    font-size: 18px;
+    color: #e5e7eb;
+}
+
+.repo-commits__count {
+    font-size: 12px;
+    padding: 2px 8px;
+
+    border-radius: 999px;
+
+    background: rgba(255,255,255,0.05);
+    color: #9ca3af;
+}
+
+.repo-commits__list {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.repo-commits__list::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: 16px;
+
+    width: 2px;
+    height: 100%;
+
+    background: linear-gradient(
+            to bottom,
+            rgba(59,130,246,0.4),
+            rgba(59,130,246,0.05)
+    );
+}
