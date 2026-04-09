@@ -1,0 +1,110 @@
+.repo-commits__item {
+    display: flex;
+    gap: 12px;
+    position: relative;
+}
+
+.repo-commits__timeline {
+    position: relative;
+    width: 32px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.repo-commits__dot {
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #3b82f6;
+
+    box-shadow: 0 0 10px rgba(59,130,246,0.8);
+}
+
+.repo-commits__content {
+    flex: 1;
+
+    padding: 12px;
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+
+    transition: 0.2s;
+}
+
+.repo-commits__content:hover {
+    border-color: rgba(59,130,246,0.4);
+    box-shadow: 0 10px 25px rgba(59,130,246,0.12);
+}
+
+.repo-commits__top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.repo-commits__avatar {
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+}
+
+.repo-commits__meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.repo-commits__author {
+    font-size: 13px;
+    color: #e5e7eb;
+}
+
+.repo-commits__date {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.repo-commits__message {
+    margin-top: 8px;
+
+    font-size: 14px;
+    color: #d1d5db;
+
+    line-height: 1.4;
+}
+
+.repo-commits__bottom {
+    margin-top: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.repo-commits__sha {
+    font-size: 12px;
+
+    padding: 2px 6px;
+    border-radius: 6px;
+
+    background: rgba(255,255,255,0.05);
+    color: #9ca3af;
+}
+
+.repo-commits__link {
+    font-size: 12px;
+    color: #60a5fa;
+
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.repo-commits__link:hover {
+    text-decoration: underline;
+}
