@@ -11,15 +11,19 @@ const Repo = () => {
     } = useParams();
 
     const [repo, setRepo] = useState([]);
+    const [commits, setCommits] = useState([]);
 
     useEffect(() => {
         githubApi.getRepository(userId, repoId).then(setRepo);
+        githubApi.getRepositoryCommits(userId, repoId).then(setCommits);
     }, [repoId, userId]);
+
+    console.log(commits);
 
     if (!repo || !repo.owner) return <Loader>Loading GitHub data...</Loader>;
 
     return (
-        <Repository repo={repo}/>
+        <Repository repo={repo} commits={commits} />
     )
 }
 
