@@ -41,6 +41,12 @@ const githubApi = {
             method: 'GET',
             headers,
         }).then(res => res.json())
+    },
+    getRepositoryCommits: (userId, repoId, page=1, perPage=10) => {
+        return fetch(`${URL}/repos/${userId}/${repoId}/commits?page=${page}&per_page=${perPage}`, {
+            method: 'GET',
+            headers,
+        }).then(res => res.json())
     }
 }
 
