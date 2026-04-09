@@ -1,13 +1,20 @@
 import './Repository.css'
 import RepositoryCommitsList from "@/components/RepositoryCommitsList/RepositoryCommitsList.jsx";
+import {useCommits} from "@/hooks/useCommits.js";
+
 
 const Repository = (props) => {
     const {
         repo,
         commits,
+        setCommits,
     } = props
 
     console.log(repo)
+
+    const {
+        repoObserverRef,
+    } = useCommits(repo, setCommits)
 
     return (
         <div className="repo-details">
@@ -94,10 +101,11 @@ const Repository = (props) => {
 
                 </div>
 
+                <RepositoryCommitsList commits={commits} />
+
             </div>
 
-            <RepositoryCommitsList commits={commits} />
-
+            <div ref={repoObserverRef}></div>
         </div>
     )
 }

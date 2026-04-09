@@ -1,3 +1,4 @@
+import {memo} from "react";
 import './CommitCard.css'
 
 const CommitCard = (props) => {
@@ -65,4 +66,4 @@ const CommitCard = (props) => {
     )
 }
 
-export default CommitCard;
+export default memo(CommitCard);
