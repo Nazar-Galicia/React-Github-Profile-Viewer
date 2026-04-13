@@ -20,8 +20,6 @@ const RepoProvider = (props) => {
         branches,
     } = useGetCommits(userId, repoId)
 
-    console.log(branches)
-
     const {
         commits,
         setPage,

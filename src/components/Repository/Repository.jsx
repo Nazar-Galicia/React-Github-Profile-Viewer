@@ -3,6 +3,7 @@ import RepositoryCommitsList from "@/components/RepositoryCommitsList/Repository
 import {useContext, useState} from "react";
 import {RepoContext} from "@/context/RepoContext.jsx";
 import {useObserver} from "@/hooks/useObserver.js";
+import RepoBranchesList from "@/components/RepositoryBranchesList/RepositoryBranchesList.jsx";
 
 const Repository = () => {
     const {
@@ -14,7 +15,7 @@ const Repository = () => {
     console.log(repo)
     useObserver(setPage, repoObserverRef);
 
-    const [activeTab, setActiveTab] = useState(0)
+    const [activeTab, setActiveTab] = useState("commits")
 
     return (
         <div className="repo-details">
@@ -129,7 +130,8 @@ const Repository = () => {
 
                 </div>
 
-                <RepositoryCommitsList />
+                {activeTab === "commits" && <RepositoryCommitsList />}
+                {activeTab === "branches" && <RepoBranchesList />}
 
             </div>
 
