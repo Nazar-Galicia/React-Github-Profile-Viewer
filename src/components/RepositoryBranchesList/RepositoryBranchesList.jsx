@@ -1,6 +1,7 @@
 import {useContext} from "react";
 import {RepoContext} from "@/context/RepoContext.jsx";
 import RepositoryBranchCard from "@/components/RepositoryBranchCard/RepositoryBranchCard.jsx";
+import './RepositoryBranchesList.css'
 
 const RepoBranchesList = () => {
     const {

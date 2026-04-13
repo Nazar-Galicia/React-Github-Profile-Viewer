@@ -1,3 +1,5 @@
+import './RepositoryBranchCard.css'
+
 const RepositoryBranchCard = (props) => {
     const {
         name,
