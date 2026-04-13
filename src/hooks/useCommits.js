@@ -1,22 +1,24 @@
 import {useEffect, useRef, useState} from "react";
-import {useObserver} from "@/hooks/useObserver.js";
 import githubAPI from "@/api/githubAPI.js";
 import {mergeArrays} from "@/utils/mergeArrays.js";
 
-export function useCommits(repo, setCommits) {
+export function useCommits(userId, repoId) {
+    const [commits, setCommits] = useState([]);
+
     const [page, setPage] = useState(0);
     const repoObserverRef = useRef(null);
 
-    useObserver(setPage, repoObserverRef)
+    console.log(repoObserverRef)
 
     useEffect(() => {
-        githubAPI.getRepositoryCommits(repo.owner.login, repo.name, page, 40)
+        githubAPI.getRepositoryCommits(userId, repoId, page, 40)
             .then(newCommits => {
                 setCommits(prev => mergeArrays(prev, newCommits))
             });
-    }, [page])
+    }, [userId, repoId, page]);
 
     return {
-        repoObserverRef,
+        commits,
+        setPage,
     }
 }

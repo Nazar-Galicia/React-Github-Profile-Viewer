@@ -1,11 +1,12 @@
 import CommitCard from "@/components/CommitCard/CommitCard.jsx";
-import {memo} from "react";
+import {memo, useContext} from "react";
 import './RepositoryCommitList.css'
+import {RepoContext} from "@/context/RepoContext.jsx";
 
-const RepositoryCommitsList = (props) => {
+const RepositoryCommitsList = () => {
     const {
-        commits,
-    } = props
+        commits=[],
+    } = useContext(RepoContext)
 
     return (
         <div className="repo-commits">

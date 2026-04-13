@@ -1,20 +1,18 @@
 import './Repository.css'
 import RepositoryCommitsList from "@/components/RepositoryCommitsList/RepositoryCommitsList.jsx";
-import {useCommits} from "@/hooks/useCommits.js";
-import {useState} from "react";
+import {useContext, useState} from "react";
+import {RepoContext} from "@/context/RepoContext.jsx";
+import {useObserver} from "@/hooks/useObserver.js";
 
-const Repository = (props) => {
+const Repository = () => {
     const {
         repo,
-        commits,
-        setCommits,
-    } = props
+        repoObserverRef,
+        setPage,
+    } = useContext(RepoContext)
 
     console.log(repo)
-
-    const {
-        repoObserverRef,
-    } = useCommits(repo, setCommits)
+    useObserver(setPage, repoObserverRef);
 
     const [activeTab, setActiveTab] = useState(0)
 
@@ -131,7 +129,7 @@ const Repository = (props) => {
 
                 </div>
 
-                <RepositoryCommitsList commits={commits} />
+                <RepositoryCommitsList />
 
             </div>
 

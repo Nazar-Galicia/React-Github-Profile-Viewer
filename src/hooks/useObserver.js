@@ -6,7 +6,10 @@ export function useObserver(setPage, observerRef) {
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        setPage((prevState) => prevState + 1);
+                        setPage((prevState) => {
+                            console.log(prevState)
+                            return prevState + 1
+                        });
                     }
                 });
             },
@@ -22,5 +25,5 @@ export function useObserver(setPage, observerRef) {
         return () => {
             if (observerRef.current) observer.unobserve(observerRef.current);
         };
-    }, []);
+    }, [setPage, observerRef]);
 }
