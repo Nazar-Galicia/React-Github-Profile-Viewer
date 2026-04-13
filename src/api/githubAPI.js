@@ -49,6 +49,12 @@ const githubApi = {
             method: 'GET',
             headers,
         }).then(res => res.json())
+    },
+    getRepositoryBranches: (userId, repoId) => {
+        return fetch(`${URL}/repos/${userId}/${repoId}/branches`, {
+            method: 'GET',
+            headers,
+        }).then(res => res.json())
     }
 }
 
