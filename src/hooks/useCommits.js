@@ -5,10 +5,8 @@ import {mergeArrays} from "@/utils/mergeArrays.js";
 export function useCommits(userId, repoId) {
     const [commits, setCommits] = useState([]);
 
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState(1);
     const repoObserverRef = useRef(null);
-
-    console.log(repoObserverRef)
 
     useEffect(() => {
         githubAPI.getRepositoryCommits(userId, repoId, page, 40)
@@ -20,5 +18,6 @@ export function useCommits(userId, repoId) {
     return {
         commits,
         setPage,
+        repoObserverRef,
     }
 }

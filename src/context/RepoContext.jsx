@@ -22,6 +22,7 @@ const RepoProvider = (props) => {
     const {
         commits,
         setPage,
+        repoObserverRef,
     } = useCommits(userId, repoId)
 
     const value = useMemo(() => {
