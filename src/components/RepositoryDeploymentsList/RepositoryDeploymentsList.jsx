@@ -3,6 +3,7 @@ import {RepoContext} from "@/context/RepoContext.jsx";
 import DeployCard from "@/components/DeployCard/DeployCard.jsx";
 import githubApi from "@/api/githubAPI.js";
 import './RepositorydeploymentsList.css'
+import EmptyDeploymentsList from "@/components/UI/EmptyDeploymentsList/EmptyDeploymentsList.jsx";
 
 const RepositoryDeploymentsList = () => {
     const {
@@ -52,7 +53,7 @@ const RepositoryDeploymentsList = () => {
             </div>
 
             <div className="repo-deployments__list">
-                {deployments.map(dep => {
+                {deployments.length !== 0 ? deployments.map(dep => {
 
                     return (
                         <DeployCard
@@ -66,7 +67,7 @@ const RepositoryDeploymentsList = () => {
                             state={statuses[dep.id] || 'loading'}
                         />
                     )
-                })}
+                }) : <EmptyDeploymentsList />}
             </div>
 
         </div>
