@@ -5,6 +5,7 @@ import {RepoContext} from "@/context/RepoContext.jsx";
 import {useObserver} from "@/hooks/useObserver.js";
 import RepoBranchesList from "@/components/RepositoryBranchesList/RepositoryBranchesList.jsx";
 import RepositoryDeploymentsList from "@/components/RepositoryDeploymentsList/RepositoryDeploymentsList.jsx";
+import RepositoryReadme from "@/components/RepositoryReadme/RepositoryReadme.jsx";
 
 const Repository = () => {
     const {
@@ -61,8 +62,9 @@ const Repository = () => {
                             <div>🐛 {repo.open_issues_count}</div>
                         </div>
 
+                        {/*Readme here*/}
                         <div className="repo-details__placeholder">
-                            Repository content / README
+                            <RepositoryReadme />
                         </div>
 
                     </div>
