@@ -67,6 +67,12 @@ const githubApi = {
             method: 'GET',
             headers,
         }).then(res => res.json())
+    },
+    getRepositoryReadmeMD: (userId, repoId) => {
+        return fetch(`${URL}/repos/${userId}/${repoId}/readme`, {
+            method: 'GET',
+            headers,
+        }).then(res => res.json())
     }
 }
 
