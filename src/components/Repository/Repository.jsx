@@ -10,12 +10,12 @@ const Repository = () => {
         repo,
         repoObserverRef,
         setPage,
+        activeTab,
+        setActiveTab,
     } = useContext(RepoContext)
 
     console.log(repo)
     useObserver(setPage, repoObserverRef);
-
-    const [activeTab, setActiveTab] = useState("commits")
 
     return (
         <div className="repo-details">

@@ -24,6 +24,8 @@ const RepoProvider = (props) => {
         commits,
         setPage,
         repoObserverRef,
+        activeTab,
+        setActiveTab,
     } = useCommits(userId, repoId)
 
     const value = useMemo(() => {
@@ -33,6 +35,8 @@ const RepoProvider = (props) => {
             repoObserverRef,
             setPage,
             branches,
+            activeTab,
+            setActiveTab,
         }
     }, [
         repo,
@@ -40,6 +44,8 @@ const RepoProvider = (props) => {
         repoObserverRef,
         setPage,
         branches,
+        activeTab,
+        setActiveTab,
     ])
 
     return (
