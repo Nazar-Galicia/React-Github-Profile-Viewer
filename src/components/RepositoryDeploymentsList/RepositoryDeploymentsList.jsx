@@ -1,7 +1,8 @@
-import {useContext, useEffect, useRef, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {RepoContext} from "@/context/RepoContext.jsx";
 import DeployCard from "@/components/DeployCard/DeployCard.jsx";
 import githubApi from "@/api/githubAPI.js";
+import './RepositorydeploymentsList.css'
 
 const RepositoryDeploymentsList = () => {
     const {

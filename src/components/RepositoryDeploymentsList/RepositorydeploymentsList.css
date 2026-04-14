@@ -1,0 +1,34 @@
+.repo-deployments {
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.repo-deployments__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.repo-deployments__title {
+    font-size: 18px;
+    color: #e5e7eb;
+}
+
+.repo-deployments__count {
+    font-size: 12px;
+    padding: 2px 8px;
+
+    border-radius: 999px;
+
+    background: rgba(255,255,255,0.05);
+    color: #9ca3af;
+}
+
+.repo-deployments__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
