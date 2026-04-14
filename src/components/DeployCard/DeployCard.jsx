@@ -1,4 +1,5 @@
 import {memo} from "react";
+import './DeployCard.css'
 
 const DeployCard = (props) => {
     const {

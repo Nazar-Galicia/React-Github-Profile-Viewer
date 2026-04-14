@@ -1,0 +1,136 @@
+.repo-deployments__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+
+    transition: 0.2s;
+}
+
+.repo-deployments__item:hover {
+    border-color: rgba(59,130,246,0.4);
+    box-shadow: 0 10px 25px rgba(59,130,246,0.12);
+}
+
+.repo-deployments__left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.repo-deployments__status {
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+}
+
+.repo-deployments__status--success {
+    background: #22c55e;
+    box-shadow: 0 0 10px rgba(34,197,94,0.8);
+}
+
+.repo-deployments__status--failure {
+    background: #ef4444;
+    box-shadow: 0 0 10px rgba(239,68,68,0.8);
+}
+
+.repo-deployments__status--in_progress {
+    background: #f59e0b;
+    box-shadow: 0 0 10px rgba(245,158,11,0.8);
+}
+
+.repo-deployments__status--queued {
+    background: #9ca3af;
+}
+.repo-deployments__status--inactive {
+    background: #4a4a4a;
+}
+
+.repo-deployments__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.repo-deployments__env {
+    font-size: 14px;
+    color: #e5e7eb;
+}
+
+.repo-deployments__desc {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.repo-deployments__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.repo-deployments__meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.repo-deployments__branch {
+    font-size: 12px;
+    padding: 2px 6px;
+
+    border-radius: 6px;
+
+    background: rgba(255,255,255,0.05);
+    color: #9ca3af;
+}
+
+.repo-deployments__sha {
+    font-size: 12px;
+    padding: 2px 6px;
+
+    border-radius: 6px;
+
+    background: rgba(255,255,255,0.05);
+    color: #9ca3af;
+}
+
+.repo-deployments__bottom {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.repo-deployments__date {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.repo-deployments__avatar {
+    width: 24px;
+    height: 24px;
+
+    border-radius: 50%;
+}
+
+@media (max-width: 600px) {
+    .repo-deployments__item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .repo-deployments__right {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
