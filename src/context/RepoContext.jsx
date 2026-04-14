@@ -1,6 +1,6 @@
 import {createContext, useMemo} from "react";
 import {useCommits} from "@/hooks/useCommits.js";
-import {useGetCommits} from "@/hooks/useGetCommits.js";
+import {useGetRepoData} from "@/hooks/useGetRepoData.js";
 import {useParams} from "react-router-dom";
 
 export const RepoContext = createContext(null);
@@ -18,7 +18,10 @@ const RepoProvider = (props) => {
     const {
         repo,
         branches,
-    } = useGetCommits(userId, repoId)
+        deployments,
+    } = useGetRepoData(userId, repoId)
+
+    console.log(deployments)
 
     const {
         commits,
