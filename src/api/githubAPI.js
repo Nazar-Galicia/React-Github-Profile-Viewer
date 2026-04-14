@@ -55,6 +55,18 @@ const githubApi = {
             method: 'GET',
             headers,
         }).then(res => res.json())
+    },
+    getRepositoryDeployments: (userId, repoId) => {
+        return fetch(`${URL}/repos/${userId}/${repoId}/deployments`, {
+            method: 'GET',
+            headers,
+        }).then(res => res.json())
+    },
+    getRepositoryDeployStatus: (url) => {
+        return fetch(url, {
+            method: 'GET',
+            headers,
+        }).then(res => res.json())
     }
 }
 
