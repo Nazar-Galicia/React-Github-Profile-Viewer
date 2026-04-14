@@ -4,6 +4,7 @@ import {useContext, useState} from "react";
 import {RepoContext} from "@/context/RepoContext.jsx";
 import {useObserver} from "@/hooks/useObserver.js";
 import RepoBranchesList from "@/components/RepositoryBranchesList/RepositoryBranchesList.jsx";
+import RepositoryDeploymentsList from "@/components/RepositoryDeploymentsList/RepositoryDeploymentsList.jsx";
 
 const Repository = () => {
     const {
@@ -132,6 +133,7 @@ const Repository = () => {
 
                 {activeTab === "commits" && <RepositoryCommitsList />}
                 {activeTab === "branches" && <RepoBranchesList />}
+                {activeTab === "deployments" && <RepositoryDeploymentsList />}
 
             </div>
 

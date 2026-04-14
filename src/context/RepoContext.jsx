@@ -40,6 +40,7 @@ const RepoProvider = (props) => {
             branches,
             activeTab,
             setActiveTab,
+            deployments,
         }
     }, [
         repo,
@@ -49,6 +50,7 @@ const RepoProvider = (props) => {
         branches,
         activeTab,
         setActiveTab,
+        deployments,
     ])
 
     return (
