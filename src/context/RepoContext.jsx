@@ -19,6 +19,7 @@ const RepoProvider = (props) => {
         repo,
         branches,
         deployments,
+        readme,
     } = useGetRepoData(userId, repoId)
 
     console.log(deployments)
@@ -41,6 +42,7 @@ const RepoProvider = (props) => {
             activeTab,
             setActiveTab,
             deployments,
+            readme,
         }
     }, [
         repo,
@@ -51,6 +53,7 @@ const RepoProvider = (props) => {
         activeTab,
         setActiveTab,
         deployments,
+        readme,
     ])
 
     return (

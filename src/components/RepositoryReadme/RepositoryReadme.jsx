@@ -1,16 +1,18 @@
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import {useContext} from "react";
+import {RepoContext} from "@/context/RepoContext.jsx";
 
-const RepositoryReadme = (props) => {
+const RepositoryReadme = () => {
     const {
-        content,
-    } = props
+        readme
+    } = useContext(RepoContext)
 
-    if (!content) return <span>No readme.md</span>
+    if (!readme) return <span>No readme.md</span>
 
     return (
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
-            {content}
+            {readme}
         </ReactMarkdown>
     )
 }
