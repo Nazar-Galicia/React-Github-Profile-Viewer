@@ -1,10 +1,46 @@
-import {useContext} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import {RepoContext} from "@/context/RepoContext.jsx";
+import DeployCard from "@/components/DeployCard/DeployCard.jsx";
+import githubApi from "@/api/githubAPI.js";
 
 const RepositoryDeploymentsList = () => {
     const {
         deployments,
     } = useContext(RepoContext)
+
+    const [statuses, setStatuses] = useState([])
+
+    useEffect(() => {
+        if (!deployments.length) return
+
+        const fetchStatuses = async () => {
+            try {
+                const results = await Promise.all(
+                    deployments.map(async (dep) => {
+                        const res = await githubApi.getRepositoryDeployStatus(dep.statuses_url)
+
+                        return {
+                            id: dep.id,
+                            state: res?.[0]?.state || "unknown"
+                        }
+                    })
+                )
+
+                const mapped = {}
+
+                results.forEach(item => {
+                    mapped[item.id] = item.state
+                })
+
+                setStatuses(mapped)
+
+            } catch (e) {
+                console.error(e)
+            }
+        }
+
+        fetchStatuses()
+    }, [deployments])
 
     return (
         <div className="repo-deployments">
@@ -15,52 +51,21 @@ const RepositoryDeploymentsList = () => {
             </div>
 
             <div className="repo-deployments__list">
-                {deployments.map(dep => (
-                    <div key={dep.id} className="repo-deployments__item">
+                {deployments.map(dep => {
 
-                        <div className="repo-deployments__left">
-          {/*<span className={`repo-deployments__status repo-deployments__status--${dep.state}`}>*/}
-          {/*</span>*/}
-
-                            <div className="repo-deployments__info">
-            <span className="repo-deployments__env">
-              {dep.environment}
-            </span>
-
-                                <span className="repo-deployments__desc">
-              {dep.description || "No description"}
-            </span>
-                            </div>
-                        </div>
-
-                        <div className="repo-deployments__right">
-
-                            <div className="repo-deployments__meta">
-            <span className="repo-deployments__branch">
-              {dep.ref}
-            </span>
-
-                                <span className="repo-deployments__sha">
-              {dep.sha.slice(0, 7)}
-            </span>
-                            </div>
-
-                            <div className="repo-deployments__bottom">
-            <span className="repo-deployments__date">
-              {new Date(dep.created_at).toLocaleDateString()}
-            </span>
-
-                                <img
-                                    className="repo-deployments__avatar"
-                                    src={dep.creator?.avatar_url}
-                                    alt={dep.creator?.login}
-                                />
-                            </div>
-
-                        </div>
-
-                    </div>
-                ))}
+                    return (
+                        <DeployCard
+                            key={dep.id}
+                            environment={dep.environment}
+                            description={dep.description}
+                            ref={dep.ref}
+                            sha={dep.sha}
+                            created_at={dep.created_at}
+                            creator={dep.creator}
+                            state={statuses[dep.id] || 'loading'}
+                        />
+                    )
+                })}
             </div>
 
         </div>
