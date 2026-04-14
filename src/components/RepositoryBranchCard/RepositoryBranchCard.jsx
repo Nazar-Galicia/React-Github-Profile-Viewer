@@ -1,3 +1,4 @@
+import {memo} from "react";
 import './RepositoryBranchCard.css'
 
 const RepositoryBranchCard = (props) => {
@@ -35,4 +36,4 @@ const RepositoryBranchCard = (props) => {
         </div>
     )
 }
-export default RepositoryBranchCard;
+export default memo(RepositoryBranchCard);

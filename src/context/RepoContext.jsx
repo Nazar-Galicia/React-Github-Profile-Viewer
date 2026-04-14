@@ -1,4 +1,4 @@
-import {createContext, useEffect, useMemo, useRef, useState} from "react";
+import {createContext, useMemo} from "react";
 import {useCommits} from "@/hooks/useCommits.js";
 import {useGetCommits} from "@/hooks/useGetCommits.js";
 import {useParams} from "react-router-dom";
