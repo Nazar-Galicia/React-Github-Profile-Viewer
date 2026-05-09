@@ -1,37 +1,55 @@
 .repo-readme {
+    margin-top: 20px;
+
+    padding: clamp(10px, 4vw, 24px);
+
+    border-radius: clamp(10px, 3vw, 16px);
+
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+
     color: #e5e7eb;
 
-    line-height: 1.6;
-    font-size: 14px;
+    font-size: clamp(12px, 3.5vw, 15px);
+    line-height: 1.5;
+    overflow: auto;
+}
+
+.repo-readme * {
+    word-break: break-word;
+}
+
+.repo-readme p,
+.repo-readme li {
+    overflow-wrap: anywhere;
 }
 
 .repo-readme h1,
 .repo-readme h2,
 .repo-readme h3 {
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: clamp(12px, 3vw, 20px);
+    margin-bottom: clamp(6px, 2vw, 10px);
 
     font-weight: 600;
-
     color: #f9fafb;
 }
 
 .repo-readme h1 {
-    font-size: 26px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: clamp(18px, 6vw, 28px);
     padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .repo-readme h2 {
-    font-size: 20px;
+    font-size: clamp(16px, 5vw, 22px);
 }
 
 .repo-readme h3 {
-    font-size: 16px;
+    font-size: clamp(14px, 4.5vw, 18px);
 }
 
 .repo-readme p {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     color: #d1d5db;
 }
 
@@ -45,8 +63,8 @@
 }
 
 .repo-readme ul {
-    padding-left: 18px;
-    margin-bottom: 10px;
+    padding-left: clamp(14px, 4vw, 18px);
+    margin-bottom: 8px;
 }
 
 .repo-readme li {
@@ -55,21 +73,21 @@
 
 .repo-readme code {
     background: rgba(255,255,255,0.08);
-    padding: 2px 6px;
+    padding: 2px 5px;
     border-radius: 6px;
 
-    font-size: 13px;
+    font-size: clamp(11px, 3vw, 14px);
 }
 
 .repo-readme pre {
     background: #020617;
 
-    padding: 14px;
-    border-radius: 10px;
-
-    overflow-x: auto;
+    padding: clamp(8px, 3vw, 16px);
+    border-radius: clamp(8px, 2vw, 12px);
 
     border: 1px solid rgba(255,255,255,0.05);
+    width: 100%;
+    overflow-x: auto;
 }
 
 .repo-readme pre code {
@@ -77,26 +95,32 @@
     padding: 0;
 }
 
+
 .repo-readme blockquote {
     border-left: 3px solid #3b82f6;
-    padding-left: 12px;
+    padding-left: 10px;
 
     color: #9ca3af;
 
-    margin: 10px 0;
+    margin: 8px 0;
 }
 
 .repo-readme table {
+    display: block;
     width: 100%;
     border-collapse: collapse;
 
-    margin: 12px 0;
+    margin: 10px 0;
+
+    overflow-x: auto;
 }
 
 .repo-readme th,
 .repo-readme td {
     border: 1px solid rgba(255,255,255,0.08);
-    padding: 6px 10px;
+    padding: clamp(5px, 2vw, 10px);
+
+    font-size: clamp(11px, 3vw, 14px);
 }
 
 .repo-readme th {
@@ -105,21 +129,45 @@
 
 .repo-readme img {
     max-width: 100%;
-    border-radius: 10px;
-    margin: 10px 0;
+    height: auto;
+    display: block;
+
+    border-radius: clamp(6px, 2vw, 12px);
+    margin: 8px 0;
 }
 
 .repo-readme__empty {
     margin-top: 20px;
 
-    padding: 30px;
+    padding: 20px;
 
     text-align: center;
 
-    border-radius: 14px;
+    border-radius: 12px;
 
     background: rgba(255,255,255,0.02);
     border: 1px dashed rgba(255,255,255,0.08);
 
     color: #9ca3af;
+}
+@media (max-width: 360px) {
+    .repo-readme {
+        font-size: 12px;
+    }
+
+    .repo-readme h1 {
+        font-size: 18px;
+    }
+
+    .repo-readme h2 {
+        font-size: 16px;
+    }
+
+    .repo-readme h3 {
+        font-size: 14px;
+    }
+
+    .repo-readme pre {
+        font-size: 8px;
+    }
 }
